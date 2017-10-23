@@ -11,36 +11,36 @@ esHombre('Ferney').
 esHombre('Yesid').
 
 padrede('Julian','Luz').
-padrede('Nelson','juan').
+padrede('Nelson','Julian').
 padrede('Nelson','Mery').
 padrede('Carlos','Diana').
 padrede('Esperanza', 'Luz').
 padrede('Luz','Sofia').
 padrede('Diana', 'Sofia').
 
-hijode(A,B) :- padrede(B,A).
+hijo(A,B) :- padrede(B,A).
 
-abuelode(A,B) :- padrede(A,C), padrede(C,B).
+abuelo(A,B) :- padrede(A,C), padrede(C,B).
 
-hermanode(A,B) :- padrede(C,A), padrede(C,B), A \== B.
+hermano(A,B) :- padrede(C,A), padrede(C,B), A \== B.
 
 
-familiarde(A,B) :- padrede(A,B).
-familiarde(A,B) :- abuelode(A,B).
-familiarde(A,B) :- hermanode(A,B).
+familiar(A,B) :- padrede(A,B).
+familiar(A,B) :- abuelo(A,B).
+familiar(A,B) :- hermano(A,B).
 
-tiode(A,B) :- hermanode(A,C), padrede(C,B).
+tio(A,B) :- hermano(A,C), padrede(C,B).
 
-casadocon(A,B) :- padrede(A,C), padrede(B,C), A \==B.
+casado(A,B) :- padrede(A,C), padrede(B,C), A \==B.
 
-feliz(A) :- casadocon(A, _).
+feliz(A) :- casado(A, _).
 
-bisabuelode(A,B) :- padrede(C,B), abuelode(A,C).
+bisabuelo(A,B) :- padrede(C,B), abuelo(A,C).
 
-bisnieto(A,B) :- padrede(B,C), abuelode(C,A).
+bisnieto(A,B) :- padrede(B,C), abuelo(C,A).
 
-cuñadode(A,B) :- casadocon(A,C), hermanode(B,C).
-cuñadode(A,B) :- casadocon(B,C), hermanode(C,A).
+cuñado(A,B) :- casado(A,C), hermano(B,C).
+cuñado(A,B) :- casado(B,C), hermano(C,A).
 
-esAdoptado(A) :- esMujer(B), esMujer(C) , hijode(A,B), hijode(A,C), casadocon(C,B).
-esAdoptado(A) :-  esHombre(B), esHombre(C), hijode(A,B), hijode(A,C), casadocon(B,C).
+esAdoptado(A) :- esMujer(B), esMujer(C) , hijo(A,B), hijo(A,C), casado(C,B).
+esAdoptado(A) :-  esHombre(B), esHombre(C), hijo(A,B), hijo(A,C), casado(B,C).
