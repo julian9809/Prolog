@@ -1,22 +1,46 @@
-esMujer('Luz').
-esMujer('Esperanza').
-esMujer('Diana').
-esMujer('Mery').
+esMujer('Maria').
+esMujer('Paula').
+esMujer('Lucia').
+esMujer('Rosa').
+esMujer('Rocio').
+esMujer('Sara').
+esMujer('Camila').
+esMujer('Nicol').
 esMujer('Sofia').
 
+esHombre('Eduardo').
+esHombre('Nicolas').
 esHombre('Julian').
-esHombre('Nelson').
-esHombre('Carlos').
-esHombre('Ferney').
-esHombre('Yesid').
+esHombre('Arturo').
+esHombre('Pablo').
+esHombre('Rogelio').
+esHombre('Fernando').
+esHombre('Luis').
+esHombre('Camilo').
+esHombre('Juan').
 
-padrede('Julian','Luz').
-padrede('Nelson','Julian').
-padrede('Nelson','Mery').
-padrede('Carlos','Diana').
-padrede('Esperanza', 'Luz').
-padrede('Luz','Sofia').
-padrede('Diana', 'Sofia').
+padrede('Eduardo','Nicolas').
+padrede('Maria','Nicolas').
+padrede('Eduardo','Julian').
+padrede('Maria','Julian').
+padrede('Nicolas', 'Pablo').
+padrede('Lucia','Pablo').
+padrede('Nicolas', 'Rosa').
+padrede('Lucia','Rosa').
+padrede('Julian','Rocio').
+padrede('Paula','Rocio').
+padrede('Julian','Sara').
+padrede('Paula','Sara').
+padrede('Pablo','Nicol').
+padrede('Arturo','Nicol').
+padrede('Rosa','Sofia').
+padrede('Rogelio','Sofia').
+padrede('Fernando','Luis').
+padrede('Rocio','Luis').
+padrede('Fernando','Camilo').
+padrede('Rocio','Camilo').
+padrede('Sara','Juan').
+padrede('Camila','Juan').
 
 hijo(A,B) :- padrede(B,A).
 
@@ -44,3 +68,13 @@ cuñado(A,B) :- casado(B,C), hermano(C,A).
 
 esAdoptado(A) :- esMujer(B), esMujer(C) , hijo(A,B), hijo(A,C), casado(C,B).
 esAdoptado(A) :-  esHombre(B), esHombre(C), hijo(A,B), hijo(A,C), casado(B,C).
+
+primo(A,B) :- padrede(C,A), padrede(D,B),hermano(C,D).
+
+
+
+
+
+
+
+
